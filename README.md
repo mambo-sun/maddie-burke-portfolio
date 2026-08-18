@@ -4,8 +4,10 @@ A portfolio site for Maddie Burke, a senior-year fashion design major at San Fra
 
 Built and maintained by [Michael Tashjian](https://github.com/mambo-sun).
 
-**Live site:** not yet deployed — Render static site pending
-**Domain:** `grandmamaddiedesigns.com` (not yet registered)
+**Live site:** <https://maddie-burke-portfolio.onrender.com> — auto-deploys from `main`
+**Domain:** `grandmamaddiedesigns.com` — verified available, not yet registered
+
+> The live site currently serves a holding page. The real Home page lands in Phase 4.
 
 ---
 

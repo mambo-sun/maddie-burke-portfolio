@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Maddie Burke — Fashion Design</title>
+  <meta name="description" content="Portfolio of Maddie Burke, fashion designer: collections, patternmaking, and couture draping.">
+
+  <!-- Abril renders in the heading, so it is on the critical path. Preloading
+       it means the browser starts fetching before it has parsed the CSS. -->
+  <link rel="preload" href="/assets/fonts/abril-fatface.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body class="holding">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="zone-dark holding__head">
+    <div class="container">
+      <p class="eyebrow">Fashion design &middot; San Francisco State</p>
+      <h1 class="t-display">Maddie Burke</h1>
+    </div>
+
+    <!-- The ornament marks the boundary between the dark and light zones.
+         aria-hidden because it carries no information. -->
+    <svg class="ornament" viewBox="0 0 260 20" width="260" height="20" aria-hidden="true" focusable="false">
+      <path d="M2 10H96" />
+      <path d="M164 10H258" />
+      <path class="ornament__solid" d="M96 10q11-9 20 0q-9 9-20 0z" />
+      <path class="ornament__solid" d="M164 10q-11-9-20 0q9 9 20 0z" />
+      <path class="ornament__solid" d="M130 1.5l8.5 8.5l-8.5 8.5l-8.5-8.5z" />
+      <path d="M124 10h2M134 10h2" />
+    </svg>
+  </header>
+
+  <main id="main" class="holding__main">
+    <div class="container">
+      <p class="holding__note">Portfolio in progress. Collections, patternmaking and draping work coming soon.</p>
+    </div>
+  </main>
+
+  <footer class="zone-dark holding__foot">
+    <div class="container">
+      <p>&copy; 2026 Maddie Burke</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+/* ==========================================================================
+   Maddie Burke — Portfolio
+   Foundation: tokens, reset, base elements.
+
+   Order matters and is fixed (STYLEGUIDE.md §11):
+   tokens → reset → base elements → layout → components → utilities
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. FONTS
+
+   Self-hosted rather than loaded from the Google Fonts CDN. Two reasons:
+   it removes a third-party connection from every visitor's page load, and
+   it means the site keeps working if that CDN is blocked or slow.
+
+   Both faces are SIL Open Font License 1.1 — see the OFL files alongside.
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "Abril Fatface";
+  src: url("/assets/fonts/abril-fatface.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Karla";
+  src: url("/assets/fonts/karla.woff2") format("woff2");
+  font-weight: 400 700;   /* variable font: one file covers the whole range */
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. TOKENS — the zone system
+
+   The core idea of this stylesheet. Components are written ONCE against
+   abstract tokens (--text, --ground, --accent). A zone redefines what those
+   tokens mean, so the same component is correct in both zones automatically.
+
+   Rule that keeps it safe: a component must never contain a raw hex value.
+   If you are typing "#" inside a component rule, a token is missing.
+
+   Every colour below was contrast-verified before it was written down.
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Zone 2 — light. The default: galleries, project pages, About, Contact. */
+  --ground:       #F6F1E7;   /* bone */
+  --surface:      #FFFFFF;   /* raised cards, image mats */
+  --text:         #241A20;   /* 15.00:1 on ground — AAA */
+  --muted:        #544649;   /*  7.94:1 on ground — AAA */
+  --accent:       #7A2A38;   /* oxblood — 8.42:1 — AAA */
+  --accent-gold:  #5E4A0F;   /* antique gold — 7.58:1 — AAA */
+  --gilt:         #C9A227;   /* 2.15:1 — DECORATIVE ONLY, never informational */
+  --hairline:     rgba(36, 26, 32, 0.14);
+
+  /* Spacing — one scale, no off-scale values. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 96px;
+  --space-9: 128px;
+
+  --font-display: "Abril Fatface", Georgia, serif;
+  --font-body:    "Karla", system-ui, -apple-system, sans-serif;
+
+  --measure: 65ch;          /* max width of running text */
+  --container: 1320px;
+}
+
+/* Zone 1 — dark chrome. Nav, hero, project headers, footer. */
+.zone-dark {
+  --ground:      #17101B;   /* ink */
+  --surface:     #241A2B;
+  --text:        #F3E9DB;   /* 15.53:1 on ground — AAA */
+  --muted:       #B5A49E;   /*  7.78:1 on ground — AAA */
+  --accent:      #D9A93A;   /* gold — 8.60:1 — AAA, unrestricted here */
+  --accent-alt:  #E08C97;   /* rose — 7.43:1 — AAA */
+  --fill:        #8C2F3F;   /* oxblood — FILL ONLY, fails 2.30:1 as text */
+  --hairline:    rgba(243, 233, 219, 0.16);
+
+  background: var(--ground);
+  color: var(--text);
+}
+
+
+/* --------------------------------------------------------------------------
+   3. RESET
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1, h2, h3, h4,
+p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+ul[role="list"] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Images always carry width/height in the markup so the browser can reserve
+   space before they load. height:auto lets CSS resize them without distorting
+   that ratio. Together these prevent layout shift. */
+img {
+  height: auto;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. BASE ELEMENTS
+   -------------------------------------------------------------------------- */
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;              /* 17px — this is a reading site */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Abril is display-only. It has a practical floor around 28px: below that the
+   thin strokes vanish and the counters fill in. H3 and smaller use Karla.
+   H2's minimum is 1.75rem (28px) rather than 1.5rem for exactly this reason —
+   that irregularity in the scale is deliberate. See STYLEGUIDE.md §2. */
+.t-display,
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.t-display { font-size: clamp(2.5rem, 7vw, 5rem); letter-spacing: -0.015em; }
+h1         { font-size: clamp(2rem, 5vw, 3.25rem); letter-spacing: -0.012em; }
+h2         { font-size: clamp(1.75rem, 3vw, 2.25rem); }
+
+h3 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+p {
+  max-width: var(--measure);
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+/* Never remove a focus ring without an equally visible replacement.
+   :focus-visible shows it for keyboard users without ringing mouse clicks. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+
+/* --------------------------------------------------------------------------
+   5. LAYOUT
+   -------------------------------------------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* First focusable element on every page. Sits off-screen until focused, so a
+   keyboard user can jump past the nav instead of tabbing through it on every
+   page. Required by STYLEGUIDE.md §8. */
+.skip-link {
+  position: absolute;
+  left: var(--space-3);
+  top: var(--space-3);
+  z-index: 100;
+  padding: var(--space-2) var(--space-3);
+  background: var(--surface);
+  color: var(--text);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+
+/* --------------------------------------------------------------------------
+   6. ORNAMENT
+
+   The site's one piece of pure decoration: a Deco lozenge between two Nouveau
+   leaf forms. It marks every boundary between the dark and light zones — a
+   hard edge from ink to bone is abrupt, and this makes the transition read as
+   deliberate. aria-hidden in the markup, since it says nothing.
+   -------------------------------------------------------------------------- */
+
+.ornament {
+  color: var(--accent);
+  stroke: currentColor;
+  stroke-width: 1.25;
+  fill: none;
+  width: 260px;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+}
+
+.ornament .ornament__solid {
+  fill: currentColor;
+  stroke: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   7. MOTION
+
+   Respected site-wide rather than per-component, so a new animation cannot
+   accidentally ship without honouring it.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   8. HOLDING PAGE — temporary
+
+   Replaced by the real Home page in Phase 4. Kept isolated at the bottom so
+   deleting it later touches nothing above.
+   -------------------------------------------------------------------------- */
+
+.holding {
+  min-height: 100vh;
+  min-height: 100svh;   /* svh accounts for mobile browser chrome */
+  display: flex;
+  flex-direction: column;
+}
+
+.holding__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding-block: var(--space-7) var(--space-5);
+  text-align: center;
+}
+
+.holding__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+  padding-block: var(--space-8);
+}
+
+.holding__note {
+  color: var(--muted);
+  max-width: 42ch;
+}
+
+.holding__foot {
+  padding-block: var(--space-4);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.875rem;
+  border-top: 1px solid var(--hairline);
+}
