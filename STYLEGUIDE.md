@@ -157,7 +157,7 @@ Built once, reused everywhere. Adding a new one means adding it here in the same
 | # | Component | Notes |
 |---|---|---|
 | 1 | Skip link | First focusable element on every page, `href="#main"` |
-| 2 | Nav | Always `.zone-dark`. Wordmark + 4 links. Toggle below 600px. `aria-current="page"` **plus** a visual rule |
+| 2 | Nav | Always `.zone-dark`. Wordmark + 3 links. Toggle below 600px, progressively enhanced. `aria-current="page"` **plus** a visual rule |
 | 3 | Footer | Always `.zone-dark`. Contact, socials, year |
 | 4 | Button | `.btn` primary (fill) / `.btn--ghost` outlined. **Min 44×44px** |
 | 5 | Project card | `.card` standard / `.card--feature` full-width. Image, category label, title, year |
@@ -224,6 +224,8 @@ WCAG 2.1 AA sitewide, AAA on nav. These are build requirements, not a later audi
 - **Lightbox:** Esc closes, ←/→ navigate, focus trapped while open, focus returned to the triggering thumbnail on close, `aria-modal="true"`. A mouse-only lightbox is the most common accessibility failure on portfolio sites
 - **No hover-only interactions.** Anything revealed on hover is permanently visible on touch
 - **Touch targets ≥ 44×44px** with space between adjacent ones
+- **`role="list"` on any list styled with `list-style: none`.** Safari and VoiceOver silently drop list semantics when the marker is removed, so a nav stops being announced as a list of N items. The role restores it. Applies to `.nav__list` and `.footer__links`
+- **The mobile nav is progressively enhanced.** The toggle button is `display: none` until an inline script adds a `js` class to `<html>`. If that script never runs, the links stay visible and stacked instead of being sealed behind a dead button. Any future collapsible component follows the same pattern
 - **Reduced motion:**
   ```css
   @media (prefers-reduced-motion: reduce) {
