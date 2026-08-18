@@ -445,3 +445,55 @@ a {
 /* Temporary. Marks a page whose content has not been built yet — delete each
    one as its section lands. */
 .stub { color: var(--muted); max-width: 46ch; }
+
+
+/* --------------------------------------------------------------------------
+   11. CONTACT & FOOTER EMAIL
+
+   With no CV to download, the email address is the site's single conversion
+   point (PLAN.md §5). It is deliberately plain text in a plain mailto rather
+   than obfuscated — see PLAN.md §5 for why.
+   -------------------------------------------------------------------------- */
+
+.footer__email {
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.footer__email a { color: var(--text); }
+
+.contact__lead { color: var(--muted); }
+
+.contact__email {
+  font-size: clamp(1.125rem, 4vw, 1.5rem);
+  font-weight: 600;
+  overflow-wrap: anywhere;   /* long address must not force a sideways scroll */
+}
+
+
+/* --------------------------------------------------------------------------
+   12. PORTRAIT
+
+   Capped at 320px. The source is 532px wide (a downscaled runway export), so
+   displaying it larger would upscale and soften. The cap is set by the asset,
+   not by taste — STYLEGUIDE.md §7.
+   -------------------------------------------------------------------------- */
+
+.portrait {
+  margin: 0;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.portrait img {
+  width: 100%;
+  border: 1px solid var(--hairline);
+}
+
+.caption {
+  font-size: 0.875rem;
+  color: var(--muted);
+  text-align: left;
+}

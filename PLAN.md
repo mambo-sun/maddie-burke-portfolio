@@ -192,11 +192,15 @@ Everything is static. Nothing needs a server.
 
 **About:** bio, education (SFSU), skills — patternmaking, draping, grading, industrial machines, knitwear, Clo3D, Illustrator, InDesign — awards.
 
-**About has no portrait.** The only candidate in the asset set was the poster photo, excluded per the §2 attribution note. A page about a person with no picture of that person is a weak page, so this needs one headshot from Maddie — the cheapest possible ask, and the one with the highest return. Failing that, one of the self-modelled Selected Work images can double as a portrait, though it is a compromise.
+**About portrait — resolved, with a caveat.** `runway-6.jpg` cropped 4:5 to 532×665 *(client's choice)*. It is a runway shot rather than a headshot, and it is capped at **320px display width** because the source is a 532px downscaled export and anything larger upscales.
+
+Two things follow. Its caption and alt text describe **the garment, not the person**, because the identity of the model is not confirmed from the assets — if that is Maddie, the caption can be warmed up in one edit; if it is a model, nothing on the page has claimed otherwise. And a genuine headshot remains worth asking for: an About page whose only image is a three-quarter runway shot of someone in a veil still does not show a reader what the designer looks like.
 
 **No CV and no PDF download** *(confirmed — the CV does not exist and is out of scope)*. Two consequences worth stating rather than leaving implicit: the skills list on About is now the *only* place a recruiter can read her capabilities as text, so it earns real space instead of a throwaway line; and Contact carries more weight as the single conversion point, since there is no document for someone to take away. If a CV appears later it drops onto About with no restructuring — but it must then follow the §7 rule about phone numbers and addresses.
 
-**Contact:** lightly obfuscated `mailto:` (friction against naive scrapers, not protection — worth being honest about that), Instagram, LinkedIn, availability line.
+**Contact:** `maddieeburke@gmail.com` as a plain `mailto:`, plus Instagram and LinkedIn once those handles are supplied.
+
+**Decision — no email obfuscation.** The earlier draft called for "light obfuscation." On implementation that was dropped, because it is theatre: entity-encoding or splitting the address stops no modern scraper, and every technique that actually works also breaks the address for someone — screen readers, no-JS users, or anyone copying it by hand. With no CV to download, this address is the site's single conversion point, so it is written plainly and linked plainly. If the spam becomes a real problem the right fix is a filter on her side, not broken markup on his.
 
 **JavaScript in full:** nav toggle; lightbox (Esc, ←/→, focus trapped, focus restored to the triggering thumbnail on close, `aria-modal="true"`). Lazy loading is native `loading="lazy"`. That is the entire JS surface.
 
