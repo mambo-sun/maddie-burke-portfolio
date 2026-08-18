@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Runway 2026 — Maddie Burke</title>
+  <meta name="description" content="Runway 2026 — one look from the SFSU show by fashion designer Maddie Burke.">
+
+  <!-- Runs before render so the nav never flashes open then collapses. It also
+       means the mobile toggle only appears once JS is confirmed working. -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <link rel="preload" href="/assets/fonts/abril-fatface.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/main.js" defer></script>
+</head>
+
+<body class="page">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <nav class="nav zone-dark" aria-label="Main" data-nav data-open="false">
+    <div class="container nav__inner">
+      <a class="nav__mark" href="/index.html">Maddie Burke</a>
+
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+
+      <ul class="nav__list" id="nav-menu" role="list">
+        <li><a class="nav__link" href="/work.html" aria-current="page">Work</a></li>
+        <li><a class="nav__link" href="/about.html">About</a></li>
+        <li><a class="nav__link" href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main" class="page__main">
+
+    <header class="zone-dark page__head">
+      <div class="container">
+        <p class="eyebrow">Runway show</p>
+        <h1>Runway 2026</h1>
+      </div>
+      <svg class="ornament" viewBox="0 0 260 20" width="260" height="20" aria-hidden="true" focusable="false">
+        <path d="M2 10H96" />
+        <path d="M164 10H258" />
+        <path class="ornament__solid" d="M96 10q11-9 20 0q-9 9-20 0z" />
+        <path class="ornament__solid" d="M164 10q-11-9-20 0q9 9 20 0z" />
+        <path class="ornament__solid" d="M130 1.5l8.5 8.5l-8.5 8.5l-8.5-8.5z" />
+        <path d="M124 10h2M134 10h2" />
+      </svg>
+    </header>
+
+    <div class="container page__body">
+      <p class="stub">Show context and runway images are being prepared.</p>
+    </div>
+
+  </main>
+
+  <footer class="footer zone-dark">
+    <div class="container footer__inner">
+      <svg class="ornament" viewBox="0 0 260 20" width="260" height="20" aria-hidden="true" focusable="false">
+        <path d="M2 10H96" />
+        <path d="M164 10H258" />
+        <path class="ornament__solid" d="M96 10q11-9 20 0q-9 9-20 0z" />
+        <path class="ornament__solid" d="M164 10q-11-9-20 0q9 9 20 0z" />
+        <path class="ornament__solid" d="M130 1.5l8.5 8.5l-8.5 8.5l-8.5-8.5z" />
+        <path d="M124 10h2M134 10h2" />
+      </svg>
+      <p class="footer__email"><a href="mailto:maddieeburke@gmail.com">maddieeburke@gmail.com</a></p>
+
+      <ul class="footer__links" role="list">
+        <li><a href="/work.html">Work</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+      <ul class="footer__social" role="list">
+        <li><a href="https://www.instagram.com/the.maddie.hatter_/" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/in/maddie-burke-b0a78440a/" rel="noopener noreferrer">LinkedIn</a></li>
+      </ul>
+
+      <p class="footer__meta">&copy; 2026 Maddie Burke</p>
+    </div>
+  </footer>
+
+</body>
+</html>

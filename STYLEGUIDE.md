@@ -170,6 +170,11 @@ Built once, reused everywhere. Adding a new one means adding it here in the same
 | 12 | Ornament divider | The faceted lozenge. **Marks every zone boundary.** `aria-hidden="true"` |
 | 13 | Caption | Image caption + material/technique note |
 | 14 | Pill / tag | Materials and techniques |
+| 15 | Hero | Home only. Text + image, side by side from 900px. Image eager with `fetchpriority="high"`, never lazy |
+
+**Buttons are the zone system's clearest payoff.** One rule — `background: var(--accent); color: var(--ground)` — resolves to two independently verified pairings: ink on gold at 8.60:1 in the dark zone, bone on oxblood at 8.42:1 in the light zone. Both AAA, no `.btn--dark` variant, and no way for the two to drift apart.
+
+**Card titles respect the Abril floor.** Standard cards use Karla 700 at 1.25rem because 20px is below Abril's 28px limit. Only `.card--feature` is large enough for the display face, at `clamp(1.75rem, 4vw, 2.25rem)`.
 
 **Naming:** simple BEM-ish — `.card`, `.card__title`, `.card--feature`. No utility-class soup; this site is small enough that named components stay readable.
 
