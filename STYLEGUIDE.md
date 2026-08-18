@@ -144,8 +144,8 @@ Mobile-first. Base styles are mobile; add complexity upward with `min-width`.
 ```
 
 - Container max-width **1320px**, centred
-- Work index: feature card full-width, remaining four at 2 columns from 600px up
-- Process module: **2 columns even on mobile** — these are small studies, one-per-screen makes the page endless
+- Work index: feature card full-width, remaining two at 2 columns from 600px up
+- Documentary grid: **2 columns even on mobile** — one-per-screen makes these pages endless. Runway 2026 goes to 3 columns from tablet up, since its images cannot exceed ~500px anyway
 - Nav collapses to a toggle below 600px
 
 ---
@@ -161,11 +161,11 @@ Built once, reused everywhere. Adding a new one means adding it here in the same
 | 3 | Footer | Always `.zone-dark`. Contact, socials, year |
 | 4 | Button | `.btn` primary (fill) / `.btn--ghost` outlined. **Min 44×44px** |
 | 5 | Project card | `.card` standard / `.card--feature` full-width. Image, category label, title, year |
-| 6 | Category label | Pill: `Collection` / `Runway show` / `Technical study` / `Draping study` / `Selected work` |
+| 6 | Category label | Pill: `Collection` / `Runway show` / `Selected work` |
 | 7 | Image grid | CSS Grid, 1 → 2 columns |
 | 8 | Lightbox | Keyboard-complete, focus-trapped — see §8 |
 | 9 | Section header | Eyebrow + heading + optional intro |
-| 10 | Process module | Tighter grid, square crops, white mats — see §7 |
+| 10 | Documentary grid | Tighter grid, consistent crops, white mats — see §7 |
 | 11 | Credits block | `<dl>`. Faceted Fairytale and Runway 2026 only |
 | 12 | Ornament divider | The faceted lozenge. **Marks every zone boundary.** `aria-hidden="true"` |
 | 13 | Caption | Image caption + material/technique note |
@@ -181,8 +181,10 @@ Built once, reused everywhere. Adding a new one means adding it here in the same
 
 Not a quality bar — a deliberate difference in presentation.
 
-- **Editorial** (Faceted Fairytale, Runway 2026): large, full-bleed permitted, minimal captioning
-- **Documentary** (pattern making, draping): tight uniform grid, consistent square crops, **no full-bleed**, captions doing real work, each image on a `--surface` mat with consistent padding
+- **Editorial** (Faceted Fairytale): large, full-bleed permitted, minimal captioning. 11 professional studio images that carry themselves
+- **Documentary** (Runway 2026, Selected Work): tight uniform grid, consistent crops, **no full-bleed**, captions doing real work, each image on a `--surface` mat with consistent padding
+
+**Hard ceiling on Runway 2026:** its sources are 532×800, so no image on that page may display wider than about 500px. Beyond that it upscales and softens. This is set by the assets, not by taste.
 
 The mat is what makes photos shot on different tables on different days read as a deliberate series rather than a pile. Captions say *what the piece demonstrates*, not what it is.
 
@@ -275,8 +277,6 @@ Lazy loading is native `loading="lazy"` — no JS involved.
 ├── work/
 │   ├── faceted-fairytale.html
 │   ├── runway-2026.html
-│   ├── pattern-making.html
-│   ├── couture-draping.html
 │   └── selected.html
 ├── assets/
 │   ├── css/style.css

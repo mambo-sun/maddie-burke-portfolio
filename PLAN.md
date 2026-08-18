@@ -1,6 +1,6 @@
 # Maddie Burke — Portfolio Site Plan
 
-**Status:** Phase 2 (Plan) — **complete. Every open question is answered** (§9). Ready for sign-off and Phase 3.
+**Status:** Phase 3 complete (repo, hosting, style guide). Phase 4 in progress — foundation and holding page shipped. Site map revised down to three projects after the asset audit (§5).
 **Client:** Maddie Burke, senior-year fashion design major, SFSU
 **Built by:** Mikey Tashjian
 **Stack:** fully static — HTML / CSS / vanilla JS on Render static hosting. No Express, no MongoDB, no Brevo. **Confirmed:** nothing on the site needs to be private, so there is no reason to add a backend.
@@ -13,7 +13,7 @@
 A portfolio site presenting Maddie Burke's collections and construction skill to people deciding whether to hire, admit, or commission her.
 
 - **Design directors / hiring managers**, often skimming on a phone
-- **MA/MFA admissions committees** — these want *process* evidence, which this site now leads with rather than buries
+- **MA/MFA admissions committees** — these want *process* evidence. The asset set contains none: no flats, no toiles, no drafted patterns (§5). That is the single biggest gap in this portfolio and the most valuable thing Maddie could add later
 - **Competitions, awards, press**
 - **Freelance and commission enquiries**
 
@@ -27,47 +27,45 @@ Three consequences that drive everything below:
 
 ## 2. Site map
 
-**Revised from the first draft.** The five bodies of work are not five collections — one is the named collection, one is a runway show, two are technical coursework, one is mixed — so a single rigid "collection" template would have flattened them. See the note below.
+**Revised after the asset audit** (§5). The Drive folders promised five projects; the photography that exists supports three. There is no process documentation anywhere in the set — no flats, no toiles, no drafted patterns — so the two "technical study" pages are removed rather than filled with modelling shots that would misrepresent her.
 
 | Page | File | Purpose |
 |---|---|---|
-| Home | `index.html` | Name, positioning, hero look, the two collections featured, routes to Work / Contact |
-| Work | `work.html` | Complete index of all five projects — the hub |
-| Faceted Fairytale | `work/faceted-fairytale.html` | **The named collection — the lead work of the site** |
-| Runway 2026 | `work/runway-2026.html` | SFSU 2026 runway show — display title is a placeholder, no collection name known yet |
-| Pattern making | `work/pattern-making.html` | Advanced pattern making — technical study |
-| Couture draping | `work/couture-draping.html` | Couture draping — draping study |
-| Selected work | `work/selected.html` | One-off designs, deliberately not cohesive — placeholder title, revisit with Maddie post-launch |
-| About | `about.html` | Bio, education, skills, machines & software, awards, CV download |
+| Home | `index.html` | Name, positioning, hero look, the three projects, routes to Work / Contact |
+| Work | `work.html` | Index of all three projects — the hub |
+| Faceted Fairytale | `work/faceted-fairytale.html` | **The named collection — the lead work of the site.** 11 studio images |
+| Runway 2026 | `work/runway-2026.html` | SFSU 2026 runway show — one look, 7 images at 532×800 |
+| Selected Work | `work/selected.html` | Four one-off garments, deliberately not cohesive — placeholder title |
+| About | `about.html` | Bio, education, skills, machines & software, awards |
 | Contact | `contact.html` | Email, Instagram, LinkedIn, availability |
 
-Spelling confirmed as **Faceted Fairytale**. Slug `faceted-fairytale`.
+Seven pages, down from nine. Spelling confirmed as **Faceted Fairytale**; slug `faceted-fairytale`.
 
 ### Why one flexible template beats a rigid one
 
-The five projects are different kinds of thing, and one template flexes to fit rather than forcing them into a shape that suits only the collection:
+The three projects are different kinds of thing, and one template flexes to fit rather than forcing them into a shape that suits only the collection:
 
-| Project | Category label | Statement | Gallery | Process module | Credits |
+| Project | Category label | Statement | Gallery | Images | Credits |
 |---|---|---|---|---|---|
-| **Faceted Fairytale** | Collection | Concept, 150–250w | Lookbook | Supporting | Yes — photographer, models, MUA, styling |
-| Runway 2026 | Runway show | Show context | Runway images | Optional | Yes — show photographer |
-| Pattern making | Technical study | What it demonstrates | Drafted patterns, graded sets, flats | **Dominant** | Omitted |
-| Couture draping | Draping study | What it demonstrates | Toiles on the stand, hand-finishing | **Dominant** | Omitted |
-| Selected work | Selected work | Short intro | Mixed | Optional | If applicable |
+| **Faceted Fairytale** | Collection | Concept, 150–250w | Studio lookbook, ~6 looks | 11 | Yes — photographer, models, MUA, styling |
+| Runway 2026 | Runway show | Show context | One look, tight small grid | 7 | Yes — show photographer |
+| Selected Work | Selected work | Short intro | Four individual garments | 7 | If applicable |
 
-Five projects, five distinct category labels — and that is real information rather than decoration. It tells a reviewer how to read the page before they read a word of it: a design director skims the collection, an MFA committee slows down on the draping. Note that "Collection" and "Runway show" are deliberately different labels; if both were tagged Collection the label would stop doing any work.
+Three projects, three distinct category labels — real information rather than decoration. It tells a reviewer how to read the page before they read a word of it. "Collection" and "Runway show" are deliberately different labels; if both were tagged Collection the label would stop doing any work.
 
 ### Faceted Fairytale leads
 
-It is the only named collection, so it carries the site. Concretely: it is the hero image on Home, the first card on Work, and the page every other route should be able to reach in one hop.
+It is the only named collection and the only professionally photographed one — Sony A7 III, Lightroom-edited, white seamless, five models — so it carries the site. Concretely: it is the hero image on Home, the feature card on Work, and reachable in one hop from anywhere.
 
 There is also a quiet piece of luck in the name. *Faceted* means gem cuts, leaded glass panels, Deco geometry — and the ornament divider is already a faceted lozenge, so the lead collection's name and the site's one motif rhyme without contrivance. **Decision: the lozenge stays a divider and does not become a wordmark.** Maddie may well want to draw her own mark, and that is hers to own rather than inherit from her developer; the rhyme is there for free either way.
 
-**The standalone Process page from the first draft is now removed.** Pattern making and draping *are* the process evidence, shown in their own context with their own framing. A separate cross-collection process page would have duplicated them and diluted both.
+**Removed: the pattern-making and couture-draping pages.** Their Drive folders turned out to hold finished garments being modelled, not technical evidence — two photos of a classroom outfit and one iPhone screenshot of a black dress. Those garments moved to Selected Work, where they always belonged. A page promising drafted patterns and toiles that delivers modelling shots damages her more than not having the page at all. The standalone Process page from the first draft stays removed for the same reason: there is nothing to put on it.
 
 **Slugs are permanent, display titles are free.** Maddie can rename any project's heading at any time at no cost. Changing a *slug* after launch breaks every shared link, so the URLs above should be agreed once and left alone. The slugs deliberately describe content rather than course names, so they survive a rename.
 
-Relationships: Home is a curated pitch — hero, the two collections at full size, then a compact row to the three remaining projects. Work is the complete catalogue of five in uniform treatment. That split is what stops the two pages from being near-duplicates of each other, which is the trap at this project count. Each project page links to the next at its foot. Contact details also sit in the sitewide footer, so the Contact page is never the only route.
+Relationships: Home is a curated pitch — hero, Faceted Fairytale at full size, then Runway 2026 and Selected Work. Work is the complete catalogue in uniform treatment. At three projects these two pages risk becoming near-duplicates, so Home leads hard with the collection while Work treats all three evenly. Each project page links to the next at its foot. Contact details also sit in the sitewide footer, so the Contact page is never the only route.
+
+**Attribution note.** The collection poster in the original photo set credits *American River College* and dates the show 27 May 2025. Per client confirmation the site describes Maddie as an SFSU senior, and that image is excluded from the build (parked in `assets/originals/_parked/dropped/`). Recorded here because it is the one factual claim on the site that the assets do not corroborate.
 
 ---
 
@@ -95,7 +93,7 @@ Two zones. The Biba richness carries the chrome; the work sits on bone so garmen
 | Rose · accent | `#E08C97` | 7.43:1 on ink — AAA |
 | Oxblood · **fill only** | `#8C2F3F` | 2.30:1 as text — fails. Bone *on* it = 6.74:1 (AA; buttons yes, nav no) |
 
-**Zone 2 — Reading & galleries (light).** Work index body, all four project page bodies, About, Contact.
+**Zone 2 — Reading & galleries (light).** Work index body, all three project page bodies, About, Contact.
 
 | Role | Hex | Verified |
 |---|---|---|
@@ -146,12 +144,12 @@ Built once, reused everywhere. This list seeds `STYLEGUIDE.md` in Phase 3 and is
 3. **Footer** (dark) — contact, socials, year
 4. **Button** — primary (oxblood fill) / ghost (outlined), 44px min touch target
 5. **Project card** — image, title, category label, year; two variants, feature (full-width) and standard; used on Home and Work
-6. **Category label** — the `Collection` / `Runway show` / `Technical study` / `Draping study` / `Selected work` pill
+6. **Category label** — the `Collection` / `Runway show` / `Selected work` pill
 7. **Image grid** — CSS Grid, reflows 1 / 2 / 3 columns
 8. **Lightbox** — keyboard-complete, focus-trapped
 9. **Section header** — eyebrow + heading + optional intro
-10. **Process module** — captioned technical images at a tighter grid than the lookbook
-11. **Credits block** — definition list, used on Runway 2026 only
+10. **Documentary grid** — matted, captioned images at a tighter grid than the lookbook; used by Runway 2026 and Selected Work (§5)
+11. **Credits block** — definition list; Faceted Fairytale and Runway 2026 only
 12. **Ornament divider** — original Deco lozenge between two Nouveau leaf forms; marks zone boundaries; `aria-hidden`
 13. **Caption** — image caption plus material/technique note
 14. **Pill/tag** — materials and techniques
@@ -166,15 +164,15 @@ JS conventions: one `defer`-loaded `main.js`; `initNav()`, `initLightbox()`. No 
 |---|---|---|
 | Mobile | ≤ 599px | Base styles. Single column. Nav collapsed |
 | Tablet | 600–899px | 2-column grids, nav expands |
-| Desktop | ≥ 900px | Featured project full-width, remaining four at 2 columns |
+| Desktop | ≥ 900px | Feature card full-width, remaining two at 2 columns |
 | Wide | ≥ 1400px | Container caps at 1320px so lookbook images do not stretch and lose their crop |
 
 Per-page handling:
 
-- **Work index — five cards, which is the awkward number.** Five tiles badly: at 2 columns you get 2 + 2 + 1 with an orphan; at 3 columns you get 3 + 2 and a hole in the second row. Rather than fight it, the layout *uses* it — **Faceted Fairytale takes a full-width feature card, and the remaining four sit in a 2-column grid beneath it.** That tiles perfectly at every breakpoint (1 + 1 + 1 + 1 + 1 on mobile, 1 + 2×2 from tablet up), and it is editorially correct anyway, since the named collection should not be one of five equal tiles. The awkward count is what produced the better layout.
+- **Work index — three cards.** **Faceted Fairytale takes a full-width feature card, with Runway 2026 and Selected Work side by side beneath it.** Tiles cleanly at every width (1 + 1 + 1 on mobile, 1 + 2 from tablet up), and it is editorially right: the only named, professionally shot collection should not be one of three equal tiles. This is the same feature-card pattern designed for five projects — it survived the count change unaltered, which is a good sign it was the right shape.
 - This also means the site needs no 3-column grid at all, which removes a whole breakpoint's worth of CSS. Two columns at 1320px gives roughly 650px cards — considerably better for garment photography than three narrow ones.
 - **Lookbook:** 1 col mobile → 2 col tablet+, selected full-bleed images breaking the grid at desktop
-- **Process module:** 2 columns *even on mobile* — patterns, flats and swatches are small studies, and one-per-screen makes the page endless
+- **Runway 2026 grid:** 2 columns on mobile, 3 from tablet up, each image capped near **500px display width**. The sources are 532×800, so anything larger upscales and softens. That ceiling is set by the assets, not by taste — see §5
 - **Nav:** toggle below 600px
 - **Credits block:** stacked mobile → two-column definition list at tablet+
 
@@ -186,13 +184,15 @@ Everything is static. Nothing needs a server.
 
 **Sitewide:** dark nav + mobile toggle (JS), skip link, dark footer, focus-visible styling, ornament dividers at zone boundaries, `prefers-reduced-motion` honoured throughout.
 
-**Home:** hero look from Faceted Fairytale (eager, `fetchpriority="high"`), name + one-line positioning, the two collections as full-size cards, a compact row linking to the three remaining projects, routes to Work and Contact.
+**Home:** hero look from Faceted Fairytale (eager, `fetchpriority="high"`), name + one-line positioning, Faceted Fairytale at full size, then Runway 2026 and Selected Work, routes to Work and Contact.
 
-**Work:** Faceted Fairytale as a full-width feature card, then the remaining four at 2 columns, all with category labels.
+**Work:** Faceted Fairytale as a full-width feature card, then Runway 2026 and Selected Work at 2 columns, all with category labels.
 
-**Project pages** (one template, five instances, modules per the §2 table): dark header with title, year and category label; statement; gallery → lightbox; process module where it applies; materials & techniques pills; credits where applicable; next-project link.
+**Project pages** (one template, three instances, modules per the §2 table): dark header with title, year and category label; statement; gallery → lightbox; materials & techniques pills; credits where applicable; next-project link. **No process module** — there is nothing to put in it.
 
-**About:** portrait, bio, education (SFSU), skills — patternmaking, draping, grading, industrial machines, knitwear, Clo3D, Illustrator, InDesign — awards.
+**About:** bio, education (SFSU), skills — patternmaking, draping, grading, industrial machines, knitwear, Clo3D, Illustrator, InDesign — awards.
+
+**About has no portrait.** The only candidate in the asset set was the poster photo, excluded per the §2 attribution note. A page about a person with no picture of that person is a weak page, so this needs one headshot from Maddie — the cheapest possible ask, and the one with the highest return. Failing that, one of the self-modelled Selected Work images can double as a portrait, though it is a compromise.
 
 **No CV and no PDF download** *(confirmed — the CV does not exist and is out of scope)*. Two consequences worth stating rather than leaving implicit: the skills list on About is now the *only* place a recruiter can read her capabilities as text, so it earns real space instead of a throwaway line; and Contact carries more weight as the single conversion point, since there is no document for someone to take away. If a CV appears later it drops onto About with no restructuring — but it must then follow the §7 rule about phone numbers and addresses.
 
@@ -200,17 +200,34 @@ Everything is static. Nothing needs a server.
 
 **JavaScript in full:** nav toggle; lightbox (Esc, ←/→, focus trapped, focus restored to the triggering thumbnail on close, `aria-modal="true"`). Lazy loading is native `loading="lazy"`. That is the entire JS surface.
 
-### Photography reality, and what it changes
+### Photography — the audit
 
-Confirmed state: all five projects have photography in Google Drive. **Faceted Fairytale has the most professional images. The technical work — pattern making and draping — is documented casually.**
+The Drive set was inventoried image by image before any page was designed. **26 stills and 4 videos** — not the 75–120 the first draft assumed. That single fact drove the restructure in §2.
 
-Mixed image quality is the most common way a student portfolio undermines itself, and the usual mistake is trying to disguise it by presenting everything at the same heroic scale — which only makes the weaker images look like failed hero shots. The fix is to change the **register** per project rather than pretending the quality is uniform:
+| Project | Stills | Source | Resolution | Verdict |
+|---|---|---|---|---|
+| Faceted Fairytale | 11 | Sony A7 III, Lightroom | 1624×2436 → 4000×6000 | Professional. Carries the site |
+| Runway 2026 | 7 | unknown, EXIF absent | 532×800 | One look. Downscaled re-saves |
+| Selected Work | 7 | phone (Samsung, iPhone) | 1620×1080 → 4000×3000 | Four garments, casual settings |
+| About | 0 | — | — | No portrait exists |
 
-- **Faceted Fairytale and Runway 2026 — editorial register.** Large, full-bleed permitted, minimal captioning, images carrying themselves.
-- **Pattern making and draping — documentary register.** Tighter uniform grid, consistent sizing, no full-bleed, captions doing real work. This is not a downgrade and should not be apologised for: nobody expects a studio shot of a sloper, and a clear, well-captioned photograph of a drafted block *is* the correct presentation of a drafted block. It reads as competence. The same photo blown up full-bleed reads as a bad photo.
-- **Normalise inconsistent backgrounds.** Each technical image sits on the `#FFFFFF` surface with consistent padding, so a set shot on different tables at different times reads as a deliberate series rather than a mess.
-- **Crop, do not stretch.** Casual photos almost always have too much dead room around the subject. Consistent aspect-ratio crops fix more than any filter will.
-- Captions on technical images say *what the piece demonstrates*, not what it is — the same discipline as the alt text in §8, and usually the same sentence.
+Findings that changed the plan:
+
+- **There is no process documentation anywhere.** No flats, no toiles, no drafted patterns. The folders named `advanced-pattern-making` and `cotoure-draping` hold finished garments being modelled. Two pages were removed as a result (§2), and this is the portfolio's biggest gap (§1).
+- **Runway 2026 is one look, not a collection** — seven angles of a single peach organza dress over red lace. Those files also carry no EXIF at all while every other camera file does, which means they are downscaled exports rather than originals. At 532×800 they sit below the site's smallest 640px derivative, so that page gets a tight grid capped near 500px and no hero. Originals would fix it instantly if they ever surface.
+- **`draping.png` is an iPhone screenshot** — iOS status bar and photo filmstrip baked in. It must be cropped to the photo area before it goes anywhere near the site.
+- **EXIF is a confirmed risk, not a theoretical one.** `maddie-1.jpg` carried live GPS coordinates resolving to a residential address. `-strip` is mandatory.
+- **Videos are parked, not discarded** — four `.mov` totalling ~99MB in `assets/originals/_parked/video/`. `jacket.mov` alone is 69MB and unservable as-is, but a draping or flats video is the fastest available way to close the process gap if that is ever revisited.
+
+### Two registers
+
+Mixed image quality is the most common way a student portfolio undermines itself, and the usual mistake is disguising it by presenting everything at the same heroic scale — which only makes the weaker images look like failed hero shots. The fix is to change the **register** per project:
+
+- **Faceted Fairytale — editorial.** Large, full-bleed permitted, minimal captioning. The images carry themselves.
+- **Runway 2026 and Selected Work — documentary.** Tighter uniform grid, consistent crops, no full-bleed, captions doing real work. Not a downgrade, and not to be apologised for: a clear, well-captioned photograph of a finished garment *is* the correct presentation of that garment. The same photo blown up full-bleed just reads as a bad photo.
+- **Normalise inconsistent backgrounds.** Each documentary image sits on the `#FFFFFF` surface with consistent padding, so shots taken in a classroom, a bedroom and on a street read as a deliberate series rather than a pile.
+- **Crop, do not stretch.** Casual photos carry too much dead room. Consistent aspect-ratio crops fix more than any filter will.
+- Captions say *what the garment is and what it demonstrates* — the same discipline as the alt text in §8, usually the same sentence.
 
 ### Image pipeline
 
@@ -261,8 +278,8 @@ Not applicable, and worth stating rather than leaving blank: server-side validat
 
 WCAG 2.1 AA sitewide, AAA on nav per `accessibility.md`. All colour values in §3 are verified, not eyeballed.
 
-- **Alt text is the largest content task.** Every garment image gets genuine descriptive alt text — silhouette, fabric, colour, notable construction ("floor-length bias-cut silk slip in oxblood, cowl neck, self-covered buttons at the back") — never a filename, never `"dress"`. Decorative ornament gets `alt=""`. Across five projects this is plausibly 75–120 images. **Mikey writes the alt text** *(confirmed)* — which makes the point below a working constraint rather than a nicety.
-- **Technical images need technical alt text.** A drafted pattern or a toile is information-dense, and "a sewing pattern" conveys nothing. These need Maddie's vocabulary — what the piece demonstrates, not what it looks like.
+- **Alt text is the largest content task.** Every garment image gets genuine descriptive alt text — silhouette, fabric, colour, notable construction ("floor-length bias-cut silk slip in oxblood, cowl neck, self-covered buttons at the back") — never a filename, never `"dress"`. Decorative ornament gets `alt=""`. The real figure is **25 images across three projects** (§5), not the 75–120 first estimated — which turns this from a slog into an afternoon. **Mikey writes the alt text** *(confirmed)*.
+- **Garment alt text needs garment vocabulary.** "A dress" conveys nothing. Silhouette, fabric, construction: "peach organza shift over red lace tights, gathered cap sleeves." Where the vocabulary is uncertain, ask Maddie rather than guess — a wrong fabric name on a fashion portfolio is worse than a plain description.
 - **Lightbox to full spec:** Esc, arrow keys, `aria-modal="true"`, focus trapped while open, focus returned to the triggering thumbnail on close. Mouse-only lightboxes are the most common accessibility failure on portfolio sites.
 - **Nav at AAA** — verified above; current page marked with `aria-current="page"` *and* a visual rule, never colour alone.
 - **Gilt carries no information on light grounds** — the 2.15:1 finding, enforced as a build rule.
@@ -286,8 +303,16 @@ Neither of these blocks anything. Both are content, not structure, and both are 
 
 ### Two prerequisites before Phase 4 images
 
-3. **`brew install imagemagick`** — the machine cannot encode WebP without it (§5).
-4. **The Drive zip.** Download the folder, unzip to `assets/originals/<project-slug>/`. I have no Drive access and do not need it; the files have to be local and committed either way.
+### Done since
+
+- ~~`brew install imagemagick`~~ — installed and verified (WebP `rw+`, HEIC read).
+- ~~The Drive zip~~ — unzipped, audited, and reorganised into `assets/originals/` under the three confirmed slugs.
+
+### New, from the audit
+
+3. **A headshot for About.** The only portrait candidate was excluded per the §2 attribution note. One photo from Maddie closes it, and it is the highest-return ask on this list.
+4. **Runway 2026 originals**, if they exist. The current files are 532×800 downscaled exports and cap that page's presentation. Worth one question to whoever shot the show.
+5. **Process documentation**, if any exists anywhere — flats, toiles, drafted patterns, even phone photos. It is the one thing MFA committees look for that this portfolio currently cannot show (§1).
 
 ---
 
