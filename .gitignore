@@ -1,0 +1,25 @@
+# Secrets — never commit, even though this project currently has none.
+# Present from the first commit so it is never retrofitted after a leak.
+.env
+.env.*
+!.env.example
+
+# Image originals. Camera/phone files from Drive: large, and they carry EXIF
+# (GPS coordinates, camera serials). Only stripped, resized derivatives in
+# assets/img/ get committed. See STYLEGUIDE.md §7.
+assets/originals/
+
+# macOS
+.DS_Store
+.AppleDouble
+._*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Node — not used today (zero dependencies), here in case a build step arrives
+node_modules/
+npm-debug.log*
+dist/
