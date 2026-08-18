@@ -1,6 +1,6 @@
 # Maddie Burke — Portfolio Site Plan
 
-**Status:** Phase 3 complete (repo, hosting, style guide). Phase 4 in progress — foundation and holding page shipped. Site map revised down to three projects after the asset audit (§5).
+**Status:** Phase 4 complete — every page built and deployed. Remaining work is **copy, not code**: ten `.placeholder` blocks await Maddie's words (§9). Site map revised down to three projects after the asset audit (§5).
 **Client:** Maddie Burke, senior-year fashion design major, SFSU
 **Built by:** Mikey Tashjian
 **Stack:** fully static — HTML / CSS / vanilla JS on Render static hosting. No Express, no MongoDB, no Brevo. **Confirmed:** nothing on the site needs to be private, so there is no reason to add a backend.

@@ -41,14 +41,18 @@ function initNav() {
 
 
 function initLightbox() {
-  const gallery = document.querySelector('[data-gallery]');
+  const galleries = Array.from(document.querySelectorAll('[data-gallery]'));
   const dialog = document.getElementById('lightbox');
 
   /* No gallery, no dialog, or a browser without <dialog>: leave the links
      alone. They point at the full-size image, so they still work. */
-  if (!gallery || !dialog || typeof dialog.showModal !== 'function') return;
+  if (!galleries.length || !dialog || typeof dialog.showModal !== 'function') return;
 
-  const links = Array.from(gallery.querySelectorAll('.gallery__link'));
+  /* A page may group images into several galleries (Selected Work has one per
+     garment). They flatten into a single sequence so the arrow keys carry the
+     viewer through the whole page rather than stopping at a group boundary. */
+  const links = galleries.reduce(
+    (all, g) => all.concat(Array.from(g.querySelectorAll('.gallery__link'))), []);
   if (!links.length) return;
 
   const image = dialog.querySelector('[data-lb="image"]');

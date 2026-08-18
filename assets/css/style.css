@@ -852,3 +852,22 @@ a {
 @media (min-width: 600px) {
   .gallery--tight { grid-template-columns: repeat(3, 1fr); }
 }
+
+
+/* --------------------------------------------------------------------------
+   22. GARMENT GROUP
+
+   Selected Work is four separate one-off pieces rather than one body of work,
+   so each gets its own small gallery and caption. The grouping is the point:
+   seven photographs in a single grid would read as one set, which is exactly
+   what these are not.
+   -------------------------------------------------------------------------- */
+
+.garment {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.garment .caption { text-align: left; }
