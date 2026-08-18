@@ -497,3 +497,78 @@ a {
   color: var(--muted);
   text-align: left;
 }
+
+
+/* --------------------------------------------------------------------------
+   13. SOCIAL LINKS
+
+   No target="_blank". Opening a new tab without warning is an accessibility
+   surprise, and it takes the back button away. rel="noreferrer" is kept so
+   visiting her Instagram does not tell Instagram where the visitor came from.
+   -------------------------------------------------------------------------- */
+
+.footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2) var(--space-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__social a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--muted);
+}
+
+.footer__social a:hover { color: var(--text); }
+
+
+/* --------------------------------------------------------------------------
+   14. LONG-FORM PAGE BODY
+   -------------------------------------------------------------------------- */
+
+/* Reading pages left-align; stub pages stay centred. */
+.page__body--start {
+  align-items: flex-start;
+  text-align: left;
+  gap: var(--space-7);
+}
+
+.about__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+
+/* --------------------------------------------------------------------------
+   15. PLACEHOLDER — temporary
+
+   Deliberately conspicuous. Real copy that has not been written yet is a
+   launch blocker, and unmarked filler is exactly the thing that survives to
+   production unnoticed. Grep for "placeholder" before going live; this whole
+   block gets deleted when the last one is replaced.
+   -------------------------------------------------------------------------- */
+
+.placeholder {
+  border: 1px dashed var(--hairline);
+  padding: var(--space-4);
+  color: var(--muted);
+  max-width: var(--measure);
+}
+
+.placeholder::before {
+  content: "Placeholder";
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}

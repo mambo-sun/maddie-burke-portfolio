@@ -317,6 +317,9 @@ Neither of these blocks anything. Both are content, not structure, and both are 
 3. **A headshot for About.** The only portrait candidate was excluded per the §2 attribution note. One photo from Maddie closes it, and it is the highest-return ask on this list.
 4. **Runway 2026 originals**, if they exist. The current files are 532×800 downscaled exports and cap that page's presentation. Worth one question to whoever shot the show.
 5. **Process documentation**, if any exists anywhere — flats, toiles, drafted patterns, even phone photos. It is the one thing MFA committees look for that this portfolio currently cannot show (§1).
+6. **About copy — biography and skills.** Both are marked with a conspicuous `.placeholder` component rather than filled with plausible-sounding invention. The skills list especially: guessing at software and machine competencies on a page a hiring manager reads is a fabrication with her name on it, so it stays empty until confirmed. **Grep for `placeholder` before launch** — nothing carrying that class may ship.
+
+**Resolved:** contact details. `maddieeburke@gmail.com`, Instagram `the.maddie.hatter_`, LinkedIn `maddie-burke-b0a78440a`. Tracking parameters were stripped from both supplied URLs; the LinkedIn `lipi` value encoded a page-view instance from the developer's own session and had no business on a public page.
 
 ---
 
