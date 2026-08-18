@@ -174,6 +174,10 @@ Built once, reused everywhere. Adding a new one means adding it here in the same
 
 **Buttons are the zone system's clearest payoff.** One rule — `background: var(--accent); color: var(--ground)` — resolves to two independently verified pairings: ink on gold at 8.60:1 in the dark zone, bone on oxblood at 8.42:1 in the light zone. Both AAA, no `.btn--dark` variant, and no way for the two to drift apart.
 
+**Zone boundaries fade, they do not cut.** Every ink/bone transition uses a four-stop ramp routed through plum (`--fade-1`) and warm taupe (`--fade-2`). A direct ink-to-bone interpolation passes through dead grey — `#7D7679` even in OKLab — because both ends are near-neutral and the shortest path carries almost no chroma. The ornament sits on **solid ink above** the fade, never inside it: the fade is the transition, the ornament is the punctuation.
+
+`--ink` and `--bone` are the only tokens that do **not** change per zone. They name the two grounds absolutely, because a fade between zones has to reference both at once.
+
 **Card titles respect the Abril floor.** Standard cards use Karla 700 at 1.25rem because 20px is below Abril's 28px limit. Only `.card--feature` is large enough for the display face, at `clamp(1.75rem, 4vw, 2.25rem)`.
 
 **Naming:** simple BEM-ish — `.card`, `.card__title`, `.card--feature`. No utility-class soup; this site is small enough that named components stay readable.

@@ -74,6 +74,18 @@
 
   --backdrop: rgba(23, 16, 27, 0.94);   /* ink at 94% — lightbox overlay */
 
+  /* Zone anchors. Unlike the tokens above these do NOT change per zone —
+     they name the two grounds absolutely, because the fade between the zones
+     needs to reference both at once. */
+  --ink:    #17101B;
+  --bone:   #F6F1E7;
+  /* Warm stops for that fade. A straight ink-to-bone ramp passes through dead
+     grey (#7D7679 even in OKLab), because both ends are near-neutral and the
+     shortest path has no chroma. These route it through plum and warm taupe
+     instead, so the transition keeps the palette's warmth. */
+  --fade-1: #3A2029;
+  --fade-2: #96736B;
+
   --measure: 65ch;          /* max width of running text */
   --container: 1320px;
 }
@@ -431,7 +443,7 @@ a {
   flex-direction: column;
   align-items: center;
   gap: var(--space-3);
-  padding-block: var(--space-7) var(--space-5);
+  padding-block: var(--space-7) 0;
   text-align: center;
 }
 
@@ -612,7 +624,7 @@ a {
 .hero__inner {
   display: grid;
   gap: var(--space-6);
-  padding-block: var(--space-7);
+  padding-block: var(--space-7) var(--space-6);
 }
 
 .hero__text {
@@ -871,3 +883,81 @@ a {
 }
 
 .garment .caption { text-align: left; }
+
+
+/* --------------------------------------------------------------------------
+   23. ZONE FADE
+
+   Replaces the hard ink/bone edge with a soft transition. Two reasons it is
+   built this way:
+
+   - The ornament stays on SOLID ink above the fade, not floating inside it.
+     It keeps full contrast, and it still marks the boundary — the fade is the
+     transition, the ornament is the punctuation.
+   - The ramp routes through plum and warm taupe rather than interpolating
+     straight. Ink and bone are both near-neutral, so the direct path greys
+     out through the middle and drains the warmth out of the palette.
+
+   Implemented as ::after / ::before so no empty decorative divs are needed in
+   seven separate HTML files.
+   -------------------------------------------------------------------------- */
+
+.hero .ornament,
+.page__head .ornament {
+  margin-bottom: var(--space-6);
+}
+
+.hero::after,
+.page__head::after {
+  content: "";
+  display: block;
+  width: 100%;
+  align-self: stretch;      /* page__head is a centred flex column */
+  height: clamp(64px, 9vw, 120px);
+  background: linear-gradient(
+    to bottom,
+    var(--ink) 0%,
+    var(--fade-1) 38%,
+    var(--fade-2) 72%,
+    var(--bone) 100%
+  );
+}
+
+.footer::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: clamp(64px, 9vw, 120px);
+  background: linear-gradient(
+    to bottom,
+    var(--bone) 0%,
+    var(--fade-2) 28%,
+    var(--fade-1) 62%,
+    var(--ink) 100%
+  );
+}
+
+
+/* --------------------------------------------------------------------------
+   24. HERO FIGURE
+
+   The hero image is a look from the collection on a model, not a portrait of
+   Maddie. Sitting unlabelled beside her name it reads as one, so it is
+   credited above the image where the caption is seen before the photograph
+   rather than after it.
+   -------------------------------------------------------------------------- */
+
+.hero__figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.hero__credit {
+  font-size: 0.875rem;
+  color: var(--muted);
+  order: -1;                /* caption above the image */
+}
+
+.hero__credit a { color: var(--accent); }
