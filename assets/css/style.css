@@ -831,3 +831,24 @@ a {
   top: var(--space-3);
   right: var(--space-3);
 }
+
+
+/* --------------------------------------------------------------------------
+   21. TIGHT GALLERY — documentary register
+
+   Used where the source files are small and uniform (Runway 2026: seven
+   532px exports of a single look). Denser than the lookbook grid on purpose:
+   at three columns inside the 1320px container each cell lands near 420px,
+   comfortably under the 532px source, so nothing upscales. Two columns even
+   on mobile, because one-per-screen makes a set of near-identical frames
+   feel endless. See STYLEGUIDE.md §7.
+   -------------------------------------------------------------------------- */
+
+.gallery--tight {
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+@media (min-width: 600px) {
+  .gallery--tight { grid-template-columns: repeat(3, 1fr); }
+}
