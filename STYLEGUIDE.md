@@ -174,9 +174,17 @@ Built once, reused everywhere. Adding a new one means adding it here in the same
 
 **Buttons are the zone system's clearest payoff.** One rule — `background: var(--accent); color: var(--ground)` — resolves to two independently verified pairings: ink on gold at 8.60:1 in the dark zone, bone on oxblood at 8.42:1 in the light zone. Both AAA, no `.btn--dark` variant, and no way for the two to drift apart.
 
-**Zone boundaries fade, they do not cut.** Every ink/bone transition uses a four-stop ramp routed through plum (`--fade-1`) and warm taupe (`--fade-2`). A direct ink-to-bone interpolation passes through dead grey — `#7D7679` even in OKLab — because both ends are near-neutral and the shortest path carries almost no chroma. The ornament sits on **solid ink above** the fade, never inside it: the fade is the transition, the ornament is the punctuation.
+**Zone boundaries bleed, they do not cut.** Every ink/bone seam uses a halftone **ink bleed** (`style.css` §23): the ink breaks into a dot screen and dissolves through the top of the section beneath it.
 
-`--ink` and `--bone` are the only tokens that do **not** change per zone. They name the two grounds absolutely, because a fade between zones has to reference both at once.
+Each dot *row* is its own `repeat-x` radial-gradient layer with its own radius, one cell lower than the last — that is what makes the dots genuinely shrink. Masking one dot field with a fade would only drop their opacity, which reads as a screen dimming rather than ink breaking apart. **`background-size` is load-bearing**: without it each layer fills the element instead of tiling, and the effect collapses entirely.
+
+The top rows sit above `0.707 × cell`, the radius at which circles on a square grid cover the corners completely, so the join from solid ink is seamless. Just past it the gaps open as small stars — which is what a real halftone does at high coverage, not a bug.
+
+`--bleed-cell` (12px) is the screen frequency, and every measurement derives from it: dot radius, row spacing, and total height. Change that one value to rescale the whole effect. `--ink` and `--bone` are the only tokens that do **not** change per zone; a bleed between zones has to name both grounds at once.
+
+Content always begins **below** the bleed. Nothing is ever set over the dots, so no text sits on a patterned ground.
+
+An earlier version used a four-stop warm gradient instead. It was replaced, but the finding behind it is worth keeping: a direct ink-to-bone ramp passes through dead grey (`#7D7679` even in OKLab) because both ends are near-neutral and the shortest path carries almost no chroma.
 
 **Card titles respect the Abril floor.** Standard cards use Karla 700 at 1.25rem because 20px is below Abril's 28px limit. Only `.card--feature` is large enough for the display face, at `clamp(1.75rem, 4vw, 2.25rem)`.
 

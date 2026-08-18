@@ -79,12 +79,8 @@
      needs to reference both at once. */
   --ink:    #17101B;
   --bone:   #F6F1E7;
-  /* Warm stops for that fade. A straight ink-to-bone ramp passes through dead
-     grey (#7D7679 even in OKLab), because both ends are near-neutral and the
-     shortest path has no chroma. These route it through plum and warm taupe
-     instead, so the transition keeps the palette's warmth. */
-  --fade-1: #3A2029;
-  --fade-2: #96736B;
+  /* Halftone screen frequency for the ink bleed (§23). Larger = coarser. */
+  --bleed-cell: 12px;
 
   --measure: 65ch;          /* max width of running text */
   --container: 1320px;
@@ -886,20 +882,33 @@ a {
 
 
 /* --------------------------------------------------------------------------
-   23. ZONE FADE
+   23. INK BLEED
 
-   Replaces the hard ink/bone edge with a soft transition. Two reasons it is
-   built this way:
+   Replaces the hard ink/bone edge. The ink breaks into a halftone screen and
+   dissolves down through the top of the bone section beneath it — a print
+   idiom rather than a screen one, which suits the 1970s reference far better
+   than an airbrush gradient did.
 
-   - The ornament stays on SOLID ink above the fade, not floating inside it.
-     It keeps full contrast, and it still marks the boundary — the fade is the
-     transition, the ornament is the punctuation.
-   - The ramp routes through plum and warm taupe rather than interpolating
-     straight. Ink and bone are both near-neutral, so the direct path greys
-     out through the middle and drains the warmth out of the palette.
+   How it works: each dot ROW is its own repeat-x radial-gradient layer with
+   its own radius, positioned one cell lower than the last. That is what makes
+   the dots genuinely SHRINK down the bleed. Masking a single dot field with a
+   fade would only reduce their opacity, which reads as a screen dimming
+   rather than as ink breaking apart.
 
-   Implemented as ::after / ::before so no empty decorative divs are needed in
-   seven separate HTML files.
+   background-size is what turns each layer into a row of dots rather than one
+   element-sized blob — without it the whole effect collapses.
+
+   The top rows sit above radius 0.707 x cell, the point at which circles on a
+   square grid cover the corners completely, so the join from solid ink is
+   seamless. Just past it the gaps open as small stars, which is exactly what
+   a real halftone does at high coverage.
+
+   Every measurement derives from --bleed-cell, so changing that one value
+   rescales the screen, the row spacing and the overall height together.
+   Raise it for a coarser, more graphic print; lower it for a finer one.
+
+   Nothing is set over the dots. Content begins below the bleed, so no text
+   ever sits on a patterned ground.
    -------------------------------------------------------------------------- */
 
 .hero .ornament,
@@ -908,33 +917,88 @@ a {
 }
 
 .hero::after,
-.page__head::after {
-  content: "";
-  display: block;
-  width: 100%;
-  align-self: stretch;      /* page__head is a centred flex column */
-  height: clamp(64px, 9vw, 120px);
-  background: linear-gradient(
-    to bottom,
-    var(--ink) 0%,
-    var(--fade-1) 38%,
-    var(--fade-2) 72%,
-    var(--bone) 100%
-  );
-}
-
+.page__head::after,
 .footer::before {
   content: "";
   display: block;
   width: 100%;
-  height: clamp(64px, 9vw, 120px);
-  background: linear-gradient(
-    to bottom,
-    var(--bone) 0%,
-    var(--fade-2) 28%,
-    var(--fade-1) 62%,
-    var(--ink) 100%
-  );
+  align-self: stretch;      /* page__head is a centred flex column */
+  height: calc(var(--bleed-cell) * 16);
+  background-repeat: repeat-x;
+  background-size: var(--bleed-cell) var(--bleed-cell);
+}
+
+/* Ink above, bone below: the screen opens up downward. */
+.hero::after,
+.page__head::after {
+  background-image:
+    radial-gradient(circle calc(var(--bleed-cell) * 0.800) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.757) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.713) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.669) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.624) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.578) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.532) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.484) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.435) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.384) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.332) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.278) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.221) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.160) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.092) at 50% 50%, var(--ink) 88%, transparent 100%);
+  background-position:
+    0 calc(var(--bleed-cell) * 0),
+    0 calc(var(--bleed-cell) * 1),
+    0 calc(var(--bleed-cell) * 2),
+    0 calc(var(--bleed-cell) * 3),
+    0 calc(var(--bleed-cell) * 4),
+    0 calc(var(--bleed-cell) * 5),
+    0 calc(var(--bleed-cell) * 6),
+    0 calc(var(--bleed-cell) * 7),
+    0 calc(var(--bleed-cell) * 8),
+    0 calc(var(--bleed-cell) * 9),
+    0 calc(var(--bleed-cell) * 10),
+    0 calc(var(--bleed-cell) * 11),
+    0 calc(var(--bleed-cell) * 12),
+    0 calc(var(--bleed-cell) * 13),
+    0 calc(var(--bleed-cell) * 14);
+}
+
+/* Bone above, ink below: the same screen closing into solid. */
+.footer::before {
+  background-image:
+    radial-gradient(circle calc(var(--bleed-cell) * 0.092) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.160) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.221) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.278) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.332) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.384) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.435) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.484) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.532) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.578) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.624) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.669) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.713) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.757) at 50% 50%, var(--ink) 88%, transparent 100%),
+    radial-gradient(circle calc(var(--bleed-cell) * 0.800) at 50% 50%, var(--ink) 88%, transparent 100%);
+  background-position:
+    0 calc(var(--bleed-cell) * 1),
+    0 calc(var(--bleed-cell) * 2),
+    0 calc(var(--bleed-cell) * 3),
+    0 calc(var(--bleed-cell) * 4),
+    0 calc(var(--bleed-cell) * 5),
+    0 calc(var(--bleed-cell) * 6),
+    0 calc(var(--bleed-cell) * 7),
+    0 calc(var(--bleed-cell) * 8),
+    0 calc(var(--bleed-cell) * 9),
+    0 calc(var(--bleed-cell) * 10),
+    0 calc(var(--bleed-cell) * 11),
+    0 calc(var(--bleed-cell) * 12),
+    0 calc(var(--bleed-cell) * 13),
+    0 calc(var(--bleed-cell) * 14),
+    0 calc(var(--bleed-cell) * 15);
 }
 
 
