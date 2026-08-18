@@ -924,6 +924,12 @@ a {
   width: 100%;
   align-self: stretch;      /* page__head is a centred flex column */
   height: calc(var(--bleed-cell) * 16);
+
+  /* The bleed paints its OWN bone ground. Without this the element is
+     transparent, the dark section's ink shows through, and ink dots on an ink
+     background are perfectly invisible. background-image layers paint above
+     background-color, so this is the paper and the dots are the ink. */
+  background-color: var(--bone);
   background-repeat: repeat-x;
   background-size: var(--bleed-cell) var(--bleed-cell);
 }

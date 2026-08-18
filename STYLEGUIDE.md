@@ -182,6 +182,8 @@ The top rows sit above `0.707 × cell`, the radius at which circles on a square 
 
 `--bleed-cell` (12px) is the screen frequency, and every measurement derives from it: dot radius, row spacing, and total height. Change that one value to rescale the whole effect. `--ink` and `--bone` are the only tokens that do **not** change per zone; a bleed between zones has to name both grounds at once.
 
+**The bleed paints its own bone ground.** The `::after` sits *inside* the dark section, so without `background-color: var(--bone)` it is transparent, the ink behind shows through, and ink dots on an ink background are perfectly invisible. `background-image` layers paint above `background-color` — the colour is the paper, the layers are the ink.
+
 Content always begins **below** the bleed. Nothing is ever set over the dots, so no text sits on a patterned ground.
 
 An earlier version used a four-stop warm gradient instead. It was replaced, but the finding behind it is worth keeping: a direct ink-to-bone ramp passes through dead grey (`#7D7679` even in OKLab) because both ends are near-neutral and the shortest path carries almost no chroma.
