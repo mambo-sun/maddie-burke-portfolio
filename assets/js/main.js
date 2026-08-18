@@ -38,6 +38,58 @@ function initNav() {
   syncToViewport();
 }
 
+
+
+function initLightbox() {
+  const gallery = document.querySelector('[data-gallery]');
+  const dialog = document.getElementById('lightbox');
+
+  /* No gallery, no dialog, or a browser without <dialog>: leave the links
+     alone. They point at the full-size image, so they still work. */
+  if (!gallery || !dialog || typeof dialog.showModal !== 'function') return;
+
+  const links = Array.from(gallery.querySelectorAll('.gallery__link'));
+  if (!links.length) return;
+
+  const image = dialog.querySelector('[data-lb="image"]');
+  const caption = dialog.querySelector('[data-lb="caption"]');
+  let index = 0;
+
+  const show = (next) => {
+    index = (next + links.length) % links.length;   /* wraps both ways */
+    const link = links[index];
+    const thumb = link.querySelector('img');
+    image.src = link.href;
+    image.alt = thumb ? thumb.alt : '';
+    caption.textContent = (index + 1) + ' of ' + links.length;
+  };
+
+  links.forEach((link, i) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      show(i);
+      dialog.showModal();
+    });
+  });
+
+  dialog.querySelector('[data-lb="prev"]').addEventListener('click', () => show(index - 1));
+  dialog.querySelector('[data-lb="next"]').addEventListener('click', () => show(index + 1));
+  dialog.querySelector('[data-lb="close"]').addEventListener('click', () => dialog.close());
+
+  dialog.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft')  { event.preventDefault(); show(index - 1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); show(index + 1); }
+  });
+
+  /* Clicking the backdrop closes. The dialog fills the viewport, so a click
+     landing on the element itself rather than its contents is a backdrop
+     click. */
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
+  initLightbox();
 });
